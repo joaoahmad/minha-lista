@@ -1,0 +1,54 @@
+//#
+
+.dropdown
+    position: relative
+    list-style: none
+    
+    > a
+        cursor: pointer
+        
+        
+    .dropdown__item
+        &__form
+            padding: 0 10px
+    
+.dropdown__menu
+    list-style: none
+    position: absolute
+    top: 100%
+    right: 0
+    color: #010101
+    background: #fff
+    border-radius: 2px
+    padding: 10px 0
+    margin: 10px 0 0
+    box-shadow: 0 2px 4px rgba(0,0,0,.1)
+
+    visibility: hidden
+    opacity: 0
+
+    &::before
+        content: ''
+        position: absolute
+        top: -3px
+        right: 20px
+        width: 6px
+        height: 6px
+        border-radius: 3px 0 0 0
+        background: #fff
+        transform: rotateZ(45deg)
+
+
+    > li
+        margin: 0
+
+    a
+        display: block
+        white-space: nowrap
+        padding: 0 25px
+        line-height: 30px
+
+    .dropdown.open &
+        visibility: visible
+        opacity: 1
+

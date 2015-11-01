@@ -1,0 +1,56 @@
+.navbar
+    @extend .u-cf
+
+    position: relative
+    top: 0
+    left: 0
+    padding: 10px 24px 10px
+    width: 100%
+    color: #353535
+    z-index: 999
+    box-sizing: border-box
+    background: #fff
+
+    .nav
+        display: inline-block
+        vertical-align: top
+        font-weight: 400
+        //text-transform: uppercase
+        font-size: 1.6rem
+        margin: 0
+        > li
+            margin: 16px 0 16px 40px
+
+            &:first-child
+                margin-left: 0
+
+    .logo
+        display: inline-block
+        width: 98px
+        height: 24px
+        margin: 16px 0 0
+        background: url(../images/logo.png) no-repeat top left / 98px 24px
+
+    .actions
+        display: inline-block
+        vertical-align: top
+        margin-left: 20px
+
+    .button
+        margin: 4px 0 0 15px
+
+
+.nav
+    list-style: none
+
+    > li
+        display: block
+
+    a
+        color: inherit
+        text-decoration: none
+
+    &--inline
+        > li
+            display: inline-block
+            vertical-align: middle
