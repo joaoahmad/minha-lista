@@ -1,0 +1,74 @@
+$height: 50px
+$size: 60px
+$background: #e9eef0
+
+$budge_size: 16px
+$budge_background: #1ba1ff
+
+.duque
+    position: fixed
+    left: 50%
+    bottom: 100px
+    transform: translate3d(-50%,0,0)
+    z-index: 9999
+
+.duque-left
+    position: absolute
+    top: 0
+    right: 50%
+    display: block
+    width: 80px
+    height: $height
+    background: $background
+    padding-right: $size/2
+    border-radius: $height/2 0 0 $height/2
+    transform: translate3d(0,-50%,0)
+    transition: .33s cubic-bezier(0.43, 0.26, 0.25, 1.35)
+    z-index: 1
+
+.duque-center
+    position: relative
+    transform: translate3d(0,-50%,0)
+    z-index: 3
+
+.duque-avatar
+    position: relative
+    display: block
+    width: $size
+    height: $size
+    border-radius: 50%
+    background: darken($background, 10%)
+    box-shadow: 0 2px 14px rgba(0,0,0,.1)
+
+.duque-budge
+    position: absolute
+    display: block
+    top: 2px
+    right: 2px
+    width: $budge_size
+    height: $budge_size
+    border-radius: 50%
+    background: $budge_background
+    box-shadow: 0 2px 14px rgba(0,0,0,.1)
+    z-index: 4
+
+.duque-right
+    position: absolute
+    top: 0
+    left: 50%
+    display: block
+    width: 80px
+    height: $height
+    background: $background
+    transform: translate3d(0,-50%,0)
+    padding-left: $size/2
+    border-radius: 0 $height/2 $height/2 0
+    transition: .33s cubic-bezier(0.43, 0.26, 0.25, 1.35)
+    z-index: 2
+
+
+.duque.focused
+    .duque-left
+        width: 10px
+    .duque-right
+        width: 10px

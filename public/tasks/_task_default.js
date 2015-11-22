@@ -1,3 +1,3 @@
 module.exports = function(grunt){
-  grunt.registerTask('default', ['browserify:dev']);
+  grunt.registerTask('default', ['concurrent:watches']);
 };
