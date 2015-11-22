@@ -27,10 +27,12 @@
     "react": "^0.14.0",
     "react-addons-linked-state-mixin": "^0.14.0",
     "react-dom": "^0.14.0",
+    "react-formal": "^0.14.2",
     "react-mixin": "^2.0.2",
     "react-router": "^1.0.0-rc3",
     "serve-favicon": "~2.3.0",
-    "xml2js": "^0.4.10"
+    "xml2js": "^0.4.10",
+    "yup": "^0.11.0"
   },
   "devDependencies": {
     "autoprefixer-core": "~5.2.1",

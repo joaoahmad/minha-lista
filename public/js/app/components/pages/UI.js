@@ -8,7 +8,7 @@ import Textarea from '../Input';
 // import Party from '../Party';
 // import PartyStore from '../../stores/PartyStore';
 
-class Home extends React.Component {
+class UI extends React.Component {
   constructor() {
     super();
   }
@@ -46,7 +46,7 @@ class Home extends React.Component {
             <Input name="password" type="password" label="Senha" errorMsg="Senha incorreta" />
             <Input name="message" type="textarea" label="Mensagem" errorMsg="..." />
           </Section>
-          
+
           <Section>
             <div className="section-title">
               <span className="title">Typography</span>
@@ -82,4 +82,4 @@ class Home extends React.Component {
     );
   }
 }
-module.exports = Home;
+module.exports = UI;

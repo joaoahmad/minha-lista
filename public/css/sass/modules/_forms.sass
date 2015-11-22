@@ -7,7 +7,6 @@
   margin: 0 0 40px 0
   background: #fff
   box-sizing: border-box
-  border: 2px solid rgba(42,42,42,0.1)
   border-radius: 2px
 
   span.error
@@ -40,7 +39,8 @@
     color: $dark
     box-sizing: border-box
     padding: 10px 20px 0px 20px
-    border: none
+    border: 2px solid rgba(42,42,42,0.1)
+    transition: border .1s
     outline: none
     background: none
     appearance: none
@@ -48,7 +48,7 @@
     &:focus, &:active
       outline: none !important
       box-shadow: none !important
-      border: none !important
+      border: 2px solid rgba(42,42,42,0.2) !important
 
 
 .input-wrap.focused

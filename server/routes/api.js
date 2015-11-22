@@ -2,17 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 var users = require('./api/user');
-var markers = require('./api/marker');
+var events = require('./api/event');
 
 router.route('/users')
-    .post(function(req, res){ users.add(req, res) })
-    .get(function(req, res){ users.get(req, res) });
+    .get(function(req, res){ users.get(req, res) })
+    .post(function(req, res){ users.add(req, res) });
 
-router.route('/markers')
-    .post(function(req, res){ markers.add(req, res) })
-    .get(function(req, res){ markers.get(req, res) });
+router.route('/events')
+    .get(function(req, res){ events.get(req, res) })
+    .post(function(req, res){ events.add(req, res) });
+
+router.route('/events/:id')
+    .delete(function(req, res){ events.delete(req, res) });
 
 module.exports = router;
-
-//{"user":{"name":"João Ahmad","role":"admin"}}
-//{"marker":{"lat":"-22.85652","lng":"-43.45271"}}

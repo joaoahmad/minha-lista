@@ -14,7 +14,7 @@ class Navbar extends React.Component {
     return (
       <div className="navbar">
         <div className="container">
-          <div className="u-pull-left"><a href="./#" className='logo'></a></div>
+          <div className="u-pull-left"> <Link to="/" className='logo' /></div>
           <div className="u-pull-right">
             <ul className="nav nav--inline">
                 <li><a href="#">Tour</a></li>

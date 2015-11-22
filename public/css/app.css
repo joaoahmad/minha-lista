@@ -1253,7 +1253,6 @@ section, .section {
   margin: 0 0 40px 0;
   background: #fff;
   box-sizing: border-box;
-  border: 2px solid rgba(42, 42, 42, 0.1);
   border-radius: 2px;
 }
 .input-wrap span.error {
@@ -1289,7 +1288,9 @@ section, .section {
   color: #17191a;
   box-sizing: border-box;
   padding: 10px 20px 0px 20px;
-  border: none;
+  border: 2px solid rgba(42, 42, 42, 0.1);
+  -webkit-transition: border 0.1s;
+          transition: border 0.1s;
   outline: none;
   background: none;
   -webkit-appearance: none;
@@ -1299,7 +1300,7 @@ section, .section {
 .input-wrap input:focus, .input-wrap input:active, .input-wrap textarea:focus, .input-wrap textarea:active {
   outline: none !important;
   box-shadow: none !important;
-  border: none !important;
+  border: 2px solid rgba(42, 42, 42, 0.2) !important;
 }
 
 .input-wrap.focused label {

@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-class Input extends React.Component {
+class Form extends React.Component {
   constructor() {
     super();
     this.state = { focus: false };
@@ -22,7 +22,7 @@ class Input extends React.Component {
       <div className={classes}>
           <label>{this.props.label}</label>
           <span className="error">{this.props.errorMsg}</span>
-          <input {...this.props} onFocus={this._handleFocus.bind(this)} onFocus={this._handleFocus.bind(this)} onBlur={this._handleBlur.bind(this)}  />
+          <input {...this.props} onFocus={this._handleFocus.bind(this)} onChange={this._handleFocus.bind(this)} onBlur={this._handleBlur.bind(this)}  />
       </div>
     );
   }
@@ -32,9 +32,8 @@ class Input extends React.Component {
   }
 
   _handleBlur(event){
-      this.setState(() => (event.target.value.length > 0) ? {focus: true} : {focus: false});
-      //this.setState({ focus: (() => (event.target.value.length > 0) ? true : false)()});
+    (event.target.value.length > 0) ? this.setState({focus: true}) : this.setState({focus: false}) ;
   }
 
 }
-module.exports = Input;
+module.exports = Form;
