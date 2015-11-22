@@ -1,2 +1,2 @@
 # ui-one
-User interface based on ReactJS
+User interface with ReactJS
