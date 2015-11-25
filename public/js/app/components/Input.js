@@ -8,6 +8,8 @@ class Input extends React.Component {
   }
 
   componentDidMount(){
+      if(this.props.value != "")
+        this.setState({ focus: true });
   }
 
   render() {
@@ -22,11 +24,11 @@ class Input extends React.Component {
       <div className={classes}>
           <label>{this.props.label}</label>
           <span className="error">{this.props.errorMsg}</span>
-          <input {...this.props} onFocus={this._handleFocus.bind(this)} onFocus={this._handleFocus.bind(this)} onBlur={this._handleBlur.bind(this)}  />
+          <input {...this.props} onFocus={this._handleFocus.bind(this)} onBlur={this._handleBlur.bind(this)}  />
       </div>
     );
   }
-
+  
   _handleFocus(event){
     this.setState({focus: true});
   }

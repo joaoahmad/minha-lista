@@ -11,62 +11,35 @@ import Section from '../Section';
 import Input from '../Input';
 import Textarea from '../Input';
 
-class EventForm extends React.Component {
-    constructor() {
-        super();
-        this.state = { event: {} };
-    }
-
-    componentDidMount() {
-        this.props.model.on('change', function(){
-            this.forceUpdate();
-        }.bind(this), this);
-    }
-
-    render() {
-        //var event = this.props.model.toJSON();
-        return(
-            <form role="form">
-                <fieldset>
-                    <Input name="name" type="text" label="Nome do evento" value={this.state.event.name} onChange={this.handleChange} errorMsg="Nome incorreto" />
-                    <Input name="location" type="text" label="Local" value={this.state.event.email} onChange={this.handleChange} errorMsg="Email incorreto" />
-                </fieldset>
-
-            </form>
-        )
-    }
-    handleSave(){
-        //EventActions.create(this.state.form);
-        //this.props.history.pushState(null, '/')
-    }
-}
-
 class Event extends React.Component {
     constructor() {
         super();
         this.handleChange = this.handleChange.bind(this);
         this.state = { event : {} };
-        this.model = new EventStore.model();
+        this.eventStore = EventStore;
     }
 
     componentDidMount() {
         EventActions.get(this.props.params.id);
+        var model = this.eventStore.get(this.props.params.id);
+        if(typeof model !== 'undefined' ){
+            console.log('tem');
+            this.setState({ event: model.toJSON() });
+        }else{
+            this.eventStore.on("add change", function(){
+                model = this.eventStore.get(this.props.params.id);
+                this.setState({ event: model.toJSON() });
+                this.forceUpdate();
+            }.bind(this), this);
+        }
     }
 
-    getState() {
-        var id = this.props.params.id;
-        // console.log(id);
-        // console.log(EventStore);
-        // return { event: EventStore.get(id) };
-        //EventActions.get(id);
-    }
-
-    _onChange() {
-        this.setState(this.getState());
+    componentWillUnmount() {
+        this.eventStore.off(null, null, this);
     }
 
     render() {
-        console.log(EventStore);
+        console.log(this.state.event);
         return (
             <PageWithNavbar>
                 <Container>
@@ -75,7 +48,12 @@ class Event extends React.Component {
                             <span className="title">Editar evento</span>
                             <Link to="/events" className="u-pull-right" >Voltar</Link>
                         </div>
-                        <EventForm model={this.model} />
+                        <form role="form">
+                            <fieldset>
+                                <Input name="name" type="text" label="Nome do evento" value={this.state.event.name} onChange={this.handleChange} errorMsg="Nome incorreto" />
+                                <Input name="location" type="text" label="Local" value={this.state.event.location} onChange={this.handleChange} errorMsg="Email incorreto" />
+                            </fieldset>
+                        </form>
                     </Section>
                 </Container>
             </PageWithNavbar>
@@ -93,8 +71,5 @@ class Event extends React.Component {
         this.props.history.pushState(null, '/')
     }
 }
-
-
-//ReactMixin(EventForm.prototype, FluxBoneMixin('model'));
 
 module.exports = Event;

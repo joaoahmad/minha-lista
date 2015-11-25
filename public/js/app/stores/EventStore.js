@@ -18,6 +18,14 @@ var EventCollection = Backbone.Collection.extend({
     initialize: function() {
         this.dispatchToken = Dispatcher.register(this.dispatchCallback.bind(this));
     },
+    pushModel: function(options){
+        let self = this;
+        let model = new this.model(options);
+        model.fetch({ success(){
+            self.push(model, {'merge': true});
+            console.log(self.toJSON());
+        }});
+    },
     dispatchCallback: function(payload){
         switch (payload.actionType) {
             // do stuff...
@@ -25,13 +33,7 @@ var EventCollection = Backbone.Collection.extend({
             this.fetch();
             break;
             case 'GET_EVENT':
-            var self = this;
-            var model = new this.model({_id: payload.eventId});
-            model.fetch({ success(){
-                console.log(model);
-                self.add(model);
-            } });
-            //console.log(model);
+            this.pushModel({_id: payload.eventId});
             break;
             case 'CREATE_EVENT':
             this.create(payload.event, { wait: true });
