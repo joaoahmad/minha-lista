@@ -1,5 +1,5 @@
 import React from 'react';
-import reactMixin from 'react-mixin';
+import ReactMixin from 'react-mixin';
 import { Route, RouteHandler, Link } from 'react-router';
 import FluxBoneMixin from '../helpers/FluxBoneMixin';
 import EventActions from '../../actions/EventActions';
@@ -36,8 +36,11 @@ class EventsList extends React.Component {
     super();
   }
 
-  render() {
+  componentDidMount(){
+      EventActions.getAll();
+  }
 
+  render() {
       var items = this.props.eventStore.map(function(eventItem, i){
           return (
               <EventsListItem model={eventItem} key={i}  />
@@ -84,6 +87,6 @@ class Events extends React.Component {
   }
 }
 
-reactMixin(EventsList.prototype, FluxBoneMixin('eventStore'));
+ReactMixin(EventsList.prototype, FluxBoneMixin('eventStore'));
 
 module.exports = Events;

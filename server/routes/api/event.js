@@ -2,6 +2,15 @@ var mongoose = require('mongoose');
 var Event = require('../../models/event');
 
 module.exports.get = function(req, res) {
+    Event.findById(req.params.id, function(err, event) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(event);
+    });
+};
+
+module.exports.getAll = function(req, res) {
     Event.find(function(err, events) {
         if (err) {
             res.send(err);

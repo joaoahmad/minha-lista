@@ -13,7 +13,7 @@ class NewEvent extends React.Component {
     constructor() {
         super();
         this.handleChange = this.handleChange.bind(this);
-        this.state = { form: {} };
+        this.state = { event: {} };
     }
 
     render() {
