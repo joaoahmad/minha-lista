@@ -1,2 +1,2 @@
-# ui-one
-User interface with ReactJS
+# minha-lista
+Side project with NodeJS + MongoDB + ReactJS + BackboneJS + Grunt
